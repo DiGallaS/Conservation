@@ -19,6 +19,8 @@ public class Main {
 
         zipFiles("D:/Games/savegames.zip", list);
 
+        deleteFile(list);
+
 
     }
 
@@ -42,7 +44,6 @@ public class Main {
                 zout.write(buffer);
                 zout.closeEntry();
                 fis.close();
-                deleteFile(file);
             }
 
         } catch (Exception ex) {
@@ -50,8 +51,10 @@ public class Main {
         }
     }
 
-    public static void deleteFile(String name) {
-        File file = new File(name);
-        file.delete();
+    public static void deleteFile(String[] list) {
+        for (String name:list) {
+            File file = new File(name);
+            file.delete();
+        }
     }
 }
